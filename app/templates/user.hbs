@@ -1,0 +1,11 @@
+<img src={{model.avatarUrl}} /> <br />
+Login: {{model.login}} <br />
+Full Name: {{model.name}}
+
+<ul>
+  {{#each model.repositories as |repo|}}
+    <li>{{repo.name}}!</li>
+  {{/each}}
+</ul>
+
+{{outlet}}

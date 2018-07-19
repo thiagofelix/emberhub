@@ -1,1 +1,26 @@
-{{outlet}}
+<div class="ui fixed menu borderless">
+  <div class="ui container">
+    {{#link-to "index" class="header item"}}EmberHub{{/link-to}}
+
+    <div class="right menu">
+        {{#if session.isAuthenticated}}
+          <div class="item">
+            <img class="avatar" src={{model.avatarUrl}} />
+            {{model.name}}
+          </div>
+          <div class="item">
+            <div {{action 'logout'}} class="ui button">Sign Out</div>
+          </div>
+        {{else}}
+          <div class="item">
+            <div {{action 'login'}} class="ui primary button">Log-in</div>
+          </div>
+        {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="ui main container">
+  {{outlet}}
+</div>
+

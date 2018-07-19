@@ -1,4 +1,4 @@
-import { Factory, faker, trait } from 'ember-cli-mirage'
+import { Factory, trait } from 'ember-cli-mirage'
 
 export default Factory.extend({
   login       : i => `organization${i}`,

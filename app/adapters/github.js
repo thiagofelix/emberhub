@@ -1,25 +1,15 @@
-import { inject as service } from '@ember/service'
 import { camelize } from '@ember/string'
 import { computed } from '@ember/object'
 import { isNone } from '@ember/utils'
 import DS from 'ember-data'
 import { pluralize } from 'ember-inflector'
+import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin'
 
 const { RESTAdapter } = DS
 
-export default RESTAdapter.extend({
-
-  session: service('github-session'),
-
+export default RESTAdapter.extend(DataAdapterMixin, {
+  authorizer: 'authorizer:github',
   host: 'https://api.github.com',
-
-  headers: computed('session.githubAccessToken', function () {
-    let headers = {}
-    if (this.get('session.githubAccessToken')) {
-      headers.Authorization = `token ${this.get('session.githubAccessToken')}`
-    }
-    return headers
-  }),
 
   pathForType(type) {
     return camelize(pluralize(type.replace('github', '')))

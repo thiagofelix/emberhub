@@ -22,18 +22,27 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    'ember-cli-mirage': { trackRequests: true }
+    'ember-cli-mirage': { trackRequests: true },
+    torii: {
+      sessionServiceName: 'session',
+      providers: {
+        'github-oauth2': {
+          scope: 'repo user',
+          apiKey: 'd8404bc68339e2559e04',
+          redirectUri: 'http://localhost:4200',
+          tokenExchangeUri: 'https://github-exchange-token.herokuapp.com/api/token/test'
+        }
+      }
+    }
   }
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['ember-cli-mirage'] = {
-      enabled: false
-    }
+    ENV.APP.LOG_RESOLVER = true
+    ENV.APP.LOG_ACTIVE_GENERATION = true
+    ENV.APP.LOG_TRANSITIONS = true
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true
+    ENV.APP.LOG_VIEW_LOOKUPS = true
+    ENV['ember-cli-mirage'] = { enabled: false }
   }
 
   if (environment === 'test') {
@@ -49,7 +58,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.rootURL = '/emberhub'
+    Object.assign(ENV.torii.providers['github-oauth2'], {
+      apiKey: '46315f963776b8f2578f',
+      redirectUri: 'http://www.thiagofelix.com/emberhub/',
+      tokenExchangeUri: 'https://github-exchange-token.herokuapp.com/api/token/production'
+    })
   }
 
   return ENV
