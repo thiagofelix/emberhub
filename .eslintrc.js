@@ -1,4 +1,7 @@
 module.exports = {
+  globals: {
+    server: true,
+  },
   root: true,
   parserOptions: {
     ecmaVersion: 2017,
@@ -15,6 +18,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    semi: [2, "never"]
   },
   overrides: [
     // node files
@@ -33,6 +37,14 @@ module.exports = {
       env: {
         browser: false,
         node: true
+      }
+    },
+
+    //mirage files
+    {
+      "files": ['mirage/**'],
+      "rules": {
+        "ember/avoid-leaking-state-in-ember-objects": "off"
       }
     }
   ]

@@ -1,10 +1,9 @@
 {
   "name": "github-app",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Small description for github-app goes here",
+  "version": "0.0.1",
+  "description": "Demo client app for Github",
   "license": "MIT",
-  "author": "",
+  "author": "Thiago Felix",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -12,7 +11,7 @@
   "repository": "",
   "scripts": {
     "build": "ember build",
-    "lint:js": "eslint .",
+    "lint": "eslint .",
     "start": "ember serve",
     "test": "ember test"
   },
@@ -27,6 +26,7 @@
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-mirage": "^0.4.7",
     "ember-cli-qunit": "^4.3.2",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
