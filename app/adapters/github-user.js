@@ -1,6 +1,11 @@
 import GithubAdapter from './github'
 
 export default GithubAdapter.extend({
+  urlForFindHasMany(id, modelName, snapshot) {
+    console.log('bla')
+    return this._super(id, modelName, snapshot)
+  },
+
   urlForFindRecord(id, modelName, snapshot) {
     const isInteger = /^\d+$/
     let builtURL = this._super(id, modelName, snapshot)

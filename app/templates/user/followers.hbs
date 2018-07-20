@@ -1,0 +1,12 @@
+<div class="ui eight doubling cards">
+  {{#each model.followers as |user|}}
+    {{#link-to "user" user.login class="ui card"}}
+      <div class="image">
+        <img src="{{user.avatarUrl}}">
+      </div>
+      <div class="content">
+        <a class="header" style="text-overflow: ellipsis;overflow: hidden;">{{user.login}}</a>
+      </div>
+    {{/link-to}}
+  {{/each}}
+</div>

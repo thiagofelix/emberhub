@@ -16,7 +16,7 @@ export default Model.extend({
   name: attr('string'),
   type: attr('string'),
 
-  followers: attr('number'),
+  followersCount: attr('number'),
   following: attr('number'),
   publicGists: attr('number'),
   publicRepos: attr('number'),
@@ -41,9 +41,6 @@ export default Model.extend({
   url: attr('string'),
 
   // Embedded Objects
+  followers: hasMany('github-user'),
   repositories: hasMany('github-repository'),
-  githubRepositories: computed('repositories.[]', function() {
-    deprecate('The githubRepositories property on the github-user model has been deprecated.  Please use the repositories property.', false, { id: 'ember-data-github.deprecated-model-props', until: '1.0.0' })
-    return this.get('repositories')
-  }),
 })

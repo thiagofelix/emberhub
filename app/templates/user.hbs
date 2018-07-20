@@ -1,11 +1,42 @@
-<img src={{model.avatarUrl}} /> <br />
-Login: {{model.login}} <br />
-Full Name: {{model.name}}
+<div class="ui grid stackable">
+  <div class="three wide column">
+    <div class="ui card fluid">
+      <div class="image">
+        <img src={{model.avatarUrl}}>
+      </div>
+      <div class="content">
+        <a class="header">{{model.name}}</a>
+        <div class="meta" style='text-overflow: ellipsis; overflow:hidden'>
+          <span class="date">{{model.email}}</span>
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          Joined in {{moment-format model.createdAt 'YYYY' 'MM-YYYY-DD'}}
+        </span>
+        <span>
+          <i class="map marker alternate icon"></i>
+          {{model.location}}
+        </span>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  {{#each model.repositories as |repo|}}
-    <li>{{repo.name}}!</li>
-  {{/each}}
-</ul>
+  <div class="thirteen wide column">
+    <div class="ui secondary pointing menu">
+      {{#link-to "user.repositories" model class="item"}}
+        Repositories
+        <div class="ui label">{{model.publicRepos}}</div>
+      {{/link-to}}
 
-{{outlet}}
+      {{#link-to "user.followers" model class="item"}}
+        Followers
+        <div class="ui label">{{model.followersCount}}</div>
+      {{/link-to}}
+    </div>
+    <div class="ui segment basic" style="padding: 0">
+      {{outlet}}
+    </div>
+  </div>
+</div>
+

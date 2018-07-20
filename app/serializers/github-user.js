@@ -11,8 +11,12 @@ export default GithubSerializer.extend({
   normalize(modelClass, resourceHash, prop) {
     resourceHash.id = resourceHash.recordId || resourceHash.login
     resourceHash.links = {
-      repositories: resourceHash.repos_url
+      repositories: resourceHash.repos_url,
+      followers: resourceHash.followers_url
     }
+
+    resourceHash.followers_count = resourceHash.followers
+    delete resourceHash.followers
 
     return this._super(modelClass, resourceHash, prop)
   }
