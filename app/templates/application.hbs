@@ -1,8 +1,8 @@
 <div class="ui fixed menu borderless icon">
   <div class="ui container">
-    <a href="/" class="item">
+    {{#link-to "index" class="item"}}
       <i class="github icon big"></i>
-    </a>
+    {{/link-to}}
 
     <div class="right menu">
         {{#if session.isAuthenticated}}
